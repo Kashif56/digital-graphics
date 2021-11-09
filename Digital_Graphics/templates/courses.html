@@ -1,0 +1,210 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<!-- upto 2 directory depth-->
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Graphic Designing</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap" />
+  </noscript>
+  <link href="{% static 'css/font-awesome/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+
+
+
+  <noscript>
+    <style type="text/css">
+      [data-aos] {
+        opacity: 1 !important;
+        transform: translate(0) scale(1) !important;
+      }
+    </style>
+  </noscript>
+</head>
+
+<body id="top">
+  <header class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="header-nav" role="navigation">
+      <div class="container"><a class="link-dark navbar-brand site-title mb-0" href="{% url 'core:index' %}">Digital
+          Graphic Designing</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto me-2">
+            <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#services">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#team">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'core:index' %}#contact">Contact</a></li>
+          </ul><a class="btn btn-primary" href="{% url 'core:index' %}">Get Started</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+
+
+
+  <!-- ========================================== -->
+  <!-- COURSES -->
+  <!-- ========================================== -->
+  <div class="section pt-5 pb-3 py-lg-5 px-2 px-lg-4" id="team">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="marker marker-center change">All Courses</h2>
+      </div>
+    </div>
+    <div class="carousel carousel-dark slide pb-3" id="carouselTeam" data-bs-ride="carousel" data-aos="zoom-in-up">
+      <div class="container-narrow">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="6000">
+            <div class="row">
+
+              <!-- Logic -->
+              {% for course in courses %}
+              <div class="col-md-4">
+                <div class="card d-block mb-3">
+                  {% if course.image %}
+                  <img class="card-img-top" src="{{ course.image.url }}" alt="image" />
+                  {% else %}
+                  <img class="card-img-top" src="{% static 'images/portfolio/1.jpg' %}" alt="image" />
+                  {% endif %}
+
+
+                  <div class="card-body text-center">
+                    <div class="h5 mb-1">{{ course.name }}</div>
+                    <div class="nav text-light justify-content-center">
+                      <a href="{% url 'core:course-detail' course.slug %}" class="link btn-primary btn">
+                        Learn more <span><i class="fas fa-arrow-right"></i></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% empty %}
+              <div class="container center">
+                <p class="text-danger text-center h1"><strong>No Courses Avaiable</strong> <br>
+                  <a href="{% url 'core:index' %}" class="btn btn-primary">Go back</a>
+                </p>
+
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- ================================= -->
+  <!-- FOOTER -->
+  <!-- ================================= -->
+
+  <footer class="py-5 px-2 bg-light" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-3">
+          <div class="mb-3">
+            <div class="h4">Digital Graphic Designing</div>
+            <p class="text-muted">Your <b>Success</b> is our <b>mission</b>
+            </p>
+            <div class="social-nav">
+              <nav role="navigation">
+                <ul class="nav text-light">
+                  <li class="nav-item"><a class="nav-link" href="https://twitter.com/templateflip" title="Twitter"><i
+                        class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/templateflip"
+                      title="Facebook"><i class="fab fa-facebook"></i><span
+                        class="menu-title sr-only">Facebook</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/templateflip"
+                      title="Instagram"><i class="fab fa-instagram"></i><span
+                        class="menu-title sr-only">Instagram</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/" title="LinkedIn"><i
+                        class="fab fa-linkedin"></i><span class="menu-title sr-only">LinkedIn</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://www.behance.net/templateflip"
+                      title="Behance"><i class="fab fa-behance"></i><span class="menu-title sr-only">Behance</span></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="text-small text-muted">
+            <div class="mb-1">&copy; Copyright <strong>Digital Graphic Designing</strong>. All rights reserved.
+            </div>
+            <div>
+              <!-- Make sure to buy a license for the template before removing the line below. Buy license on https://templateflip.com/ -->Design
+              by Kashif with the help of <a href="https://templateflip.com/" target="_blank">TemplateFlip</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-3">
+          <div class="text-uppercase mb-2">Courses</div>
+          <div class="nav flex-column">
+            <a class="nav-link px-0" href="{% url 'core:courses' %}">Graphic Design</a>
+            <a class="nav-link px-0" href="{% url 'core:courses' %}">Web Design</a>
+            <a class="nav-link px-0" href="{% url 'core:courses' %}">UI/UX Design</a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-3">
+          <div class="text-uppercase mb-2">About</div>
+          <div class="nav flex-column">
+            <a class="nav-link px-0" href="#about">About</a>
+            <a class="nav-link px-0" href="#contact">Contact</a>
+            <a class="nav-link px-0" href="#about">Terms</a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-3">
+          <div class="text-uppercase mb-2">Contact Us</div>
+          <div class="text-small">
+            <div class="mb-1"><strong>Phone:</strong><br />+966-57-093-9804</div>
+            <div class="mb-1"><strong>Email:</strong><br />bh6735971@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
+  </div>
+  <div id="scrolltop"><a class="btn btn-secondary" href="#top"><span class="icon"><i
+          class="fas fa-angle-up fa-x"></i></span></a></div>
+  <script src="{% static 'scripts/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'scripts/masonry.pkgd.min.js' %}"></script>
+  <script src="{% static 'scripts/BigPicture.min.js' %}"></script>
+  <script src="{% static 'scripts/purecounter.min.js' %}"></script>
+  <script src="{% static 'scripts/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'scripts/aos.min.js' %}"></script>
+  <script src="{% static 'scripts/main.js' %}"></script>
+</body>
+
+
+
+</html>
